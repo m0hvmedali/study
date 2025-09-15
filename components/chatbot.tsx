@@ -1,1 +1,2 @@
-export { Chatbot, default } from "./chatbot/chatbot"
+export { Chatbot } from "./chatbot/chatbot"
+export { default } from "./chatbot/chatbot"
