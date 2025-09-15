@@ -24,10 +24,10 @@ import {
   Trash2,
 } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
-import { createBrowserClient } from "@supabase/ssr"
+import { createClient } from "@/lib/supabase"
 import { Chatbot } from "@/components/chatbot/chatbot"
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+const supabase = createClient()
 
 interface MediaFile {
   id: string

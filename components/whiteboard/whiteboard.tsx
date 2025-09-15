@@ -9,9 +9,9 @@ import { Slider } from "@/components/ui/slider"
 import { Badge } from "@/components/ui/badge"
 import { Pen, Eraser, Square, Circle, Type, Palette, Save, Download, Trash2 } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
-import { createBrowserClient } from "@supabase/ssr"
+import { createClient } from "@/lib/supabase"
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+const supabase = createClient()
 
 interface WhiteboardProps {
   lessonId?: string

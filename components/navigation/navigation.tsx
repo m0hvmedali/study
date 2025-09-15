@@ -22,11 +22,11 @@ const navigationItems = [
 ]
 
 export function Navigation() {
-  const { user, profile } = useAuth()
+  const { user, profile, loading } = useAuth()
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  if (!user || !profile) {
+  if (loading || !user || !profile) {
     return null
   }
 

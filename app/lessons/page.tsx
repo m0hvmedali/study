@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useAuth } from "@/hooks/use-auth"
-import { createBrowserClient } from "@/lib/supabase"
+import { createClient } from "@/lib/supabase"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -48,7 +48,7 @@ export default function LessonsPage() {
   const [selectedSubject, setSelectedSubject] = useState<string>("all")
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>("all")
 
-  const supabase = createBrowserClient()
+  const supabase = createClient()
 
   useEffect(() => {
     fetchData()

@@ -6,10 +6,14 @@ import type { User } from "@supabase/supabase-js"
 
 interface Profile {
   id: string
-  full_name: string
+  email: string
+  full_name: string | null
+  avatar_url: string | null
+  role: "student" | "teacher" | "admin"
   points: number
   level: number
   created_at: string
+  updated_at: string
 }
 
 interface AuthContextType {

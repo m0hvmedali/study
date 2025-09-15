@@ -32,11 +32,11 @@ import {
   ImageIcon,
 } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
-import { createBrowserClient } from "@supabase/ssr"
+import { createClient } from "@/lib/supabase"
 import { useRouter } from "next/navigation"
 import Chatbot from "@/components/chatbot" // Import the Chatbot component
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+const supabase = createClient()
 
 interface Subject {
   id: string
@@ -109,6 +109,7 @@ export default function AdminPage() {
         router.push("/dashboard")
         return
       }
+      // لا نستدعي fetchAdminData إلا بعد التحقق من الدور لتجنب أخطاء RLS
       fetchAdminData()
     }
   }, [user, profile, router])
@@ -146,8 +147,14 @@ export default function AdminPage() {
         totalStudents: totalStudents || 0,
         totalQuestions: totalQuestions || 0,
       })
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error fetching admin data:", error)
+      const code = (error as any)?.code ?? (error as any)?.status ?? ""
+      if (code === "42501" || code === 42501) {
+        alert("تحتاج لصلاحيات معلم/مشرف لإجراء هذه العملية")
+      } else {
+        alert("حدث خطأ أثناء تحميل بيانات الإدارة")
+      }
     }
   }
 
@@ -174,8 +181,14 @@ export default function AdminPage() {
         setIsCreateDialogOpen(false)
         resetForm()
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error creating lesson:", error)
+      const code = (error as any)?.code ?? (error as any)?.status ?? ""
+      if (code === "42501" || code === 42501) {
+        alert("تحتاج لصلاحيات معلم/مشرف لإجراء هذه العملية")
+      } else {
+        alert("حدث خطأ أثناء إنشاء الدرس")
+      }
     }
   }
 
@@ -199,8 +212,14 @@ export default function AdminPage() {
         setEditingLesson(null)
         resetForm()
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error updating lesson:", error)
+      const code = (error as any)?.code ?? (error as any)?.status ?? ""
+      if (code === "42501" || code === 42501) {
+        alert("تحتاج لصلاحيات معلم/مشرف لإجراء هذه العملية")
+      } else {
+        alert("حدث خطأ أثناء تحديث الدرس")
+      }
     }
   }
 
@@ -211,8 +230,14 @@ export default function AdminPage() {
       if (error) throw error
 
       setLessons(lessons.filter((l) => l.id !== lessonId))
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error deleting lesson:", error)
+      const code = (error as any)?.code ?? (error as any)?.status ?? ""
+      if (code === "42501" || code === 42501) {
+        alert("تحتاج لصلاحيات معلم/مشرف لإجراء هذه العملية")
+      } else {
+        alert("حدث خطأ أثناء حذف الدرس")
+      }
     }
   }
 
@@ -226,8 +251,14 @@ export default function AdminPage() {
       if (error) throw error
 
       setLessons(lessons.map((l) => (l.id === lesson.id ? { ...l, is_published: !l.is_published } : l)))
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error toggling publish status:", error)
+      const code = (error as any)?.code ?? (error as any)?.status ?? ""
+      if (code === "42501" || code === 42501) {
+        alert("تحتاج لصلاحيات معلم/مشرف لإجراء هذه العملية")
+      } else {
+        alert("حدث خطأ أثناء تغيير حالة النشر")
+      }
     }
   }
 
