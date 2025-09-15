@@ -181,7 +181,7 @@ export default function DashboardPage() {
     )
   }
 
-  if (!user || !profile) {
+  if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-amber-50">
         <Card className="w-full max-w-md">
@@ -204,12 +204,12 @@ export default function DashboardPage() {
           <motion.div variants={fadeInUp} className="mb-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-emerald-800 mb-2">مرحباً، {profile.full_name}!</h1>
+                <h1 className="text-3xl font-bold text-emerald-800 mb-2">مرحباً، {profile?.full_name || user.email}!</h1>
                 <p className="text-gray-600">استمر في رحلتك التعليمية واكسب المزيد من النقاط</p>
               </div>
               <div className="text-left">
-                <div className="text-2xl font-bold text-emerald-600">{profile.points} نقطة</div>
-                <div className="text-sm text-gray-500">المستوى {profile.level}</div>
+                <div className="text-2xl font-bold text-emerald-600">{profile?.points || 0} نقطة</div>
+                <div className="text-sm text-gray-500">المستوى {profile?.level || 1}</div>
               </div>
             </div>
           </motion.div>

@@ -8,97 +8,89 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* StudyForge Warm Theme Colors */
-  --color-primary: #059669; /* Emerald 600 */
-  --color-primary-700: #047857;
-  --color-secondary: #d97706; /* Amber 600 */
-  --color-accent: #0891b2; /* Cyan 600 */
-  --color-bg: #fafafa;
-  --color-surface: #ffffff;
-  --color-muted: #6b7280;
-  --color-on-primary: #ffffff;
-  --color-border: #e6e6e6;
-  --gradient-warm: linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(5, 150, 105, 0.08));
+  /* StudyForge Enhanced Theme Colors */
+  --background: #ffffff;
+  --foreground: #475569;
+  --card: #ecfeff;
+  --card-foreground: #164e63;
+  --popover: #ffffff;
+  --popover-foreground: #475569;
+  --primary: #164e63;
+  --primary-foreground: #ffffff;
+  --secondary: #f97316;
+  --secondary-foreground: #ffffff;
+  --muted: #f9f9f9;
+  --muted-foreground: #374151;
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #ecfeff;
+  --input: #ffffff;
+  --ring: rgba(0, 0, 0, 0.1);
+  --chart-1: #ea580c;
+  --chart-2: #dc2626;
+  --chart-3: #f97316;
+  --chart-4: #164e63;
+  --chart-5: #475569;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #475569;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #164e63;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #ecfeff;
+  --sidebar-ring: rgba(0, 0, 0, 0.1);
 
-  --background: oklch(0.9789 0.0082 121.6272);
-  --foreground: oklch(0 0 0);
-  --card: oklch(1.0 0 0);
-  --card-foreground: oklch(0 0 0);
-  --popover: oklch(1.0 0 0);
-  --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0.5106 0.2301 276.9656);
-  --primary-foreground: oklch(1.0 0 0);
-  --secondary: oklch(0.7038 0.123 182.5025);
-  --secondary-foreground: oklch(1.0 0 0);
-  --muted: oklch(0.9551 0 0);
-  --muted-foreground: oklch(0.3211 0 0);
-  --accent: oklch(0.7686 0.1647 70.0804);
-  --accent-foreground: oklch(0 0 0);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --destructive-foreground: oklch(1.0 0 0);
-  --border: oklch(0 0 0);
-  --input: oklch(0.5555 0 0);
-  --ring: oklch(0.7853 0.1041 274.7134);
-  --chart-1: oklch(0.5106 0.2301 276.9656);
-  --chart-2: oklch(0.7038 0.123 182.5025);
-  --chart-3: oklch(0.7686 0.1647 70.0804);
-  --chart-4: oklch(0.6559 0.2118 354.3084);
-  --chart-5: oklch(0.7227 0.192 149.5793);
-  --radius: 1rem;
-  --sidebar: oklch(0.9789 0.0082 121.6272);
-  --sidebar-foreground: oklch(0 0 0);
-  --sidebar-primary: oklch(0.5106 0.2301 276.9656);
-  --sidebar-primary-foreground: oklch(1.0 0 0);
-  --sidebar-accent: oklch(0.7686 0.1647 70.0804);
-  --sidebar-accent-foreground: oklch(0 0 0);
-  --sidebar-border: oklch(0 0 0);
-  --sidebar-ring: oklch(0.7853 0.1041 274.7134);
+  /* Custom StudyForge Variables */
+  --gradient-primary: linear-gradient(135deg, #164e63 0%, #0891b2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  --gradient-warm: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(22, 78, 99, 0.05) 100%);
+  --shadow-glow: 0 0 20px rgba(249, 115, 22, 0.15);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] {
-  --color-primary: #34d399; /* Emerald 400 */
-  --color-primary-700: #059669;
-  --color-secondary: #f59e0b; /* Amber 500 */
-  --color-accent: #06b6d4; /* Cyan 500 */
-  --color-bg: #0b1220;
-  --color-surface: #0f1724;
-  --color-muted: #9ca3af;
-  --color-on-primary: #041217;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --gradient-warm: linear-gradient(135deg, rgba(245, 158, 11, 0.06), rgba(52, 211, 153, 0.04));
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #f97316;
+  --secondary-foreground: #ffffff;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: rgba(249, 115, 22, 0.3);
+  --chart-1: #ea580c;
+  --chart-2: #ef4444;
+  --chart-3: #f97316;
+  --chart-4: #0891b2;
+  --chart-5: #64748b;
+  --sidebar: #0f172a;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0891b2;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(249, 115, 22, 0.3);
 
-  --background: oklch(0 0 0);
-  --foreground: oklch(1.0 0 0);
-  --card: oklch(0.2455 0.0217 257.2823);
-  --card-foreground: oklch(1.0 0 0);
-  --popover: oklch(0.2455 0.0217 257.2823);
-  --popover-foreground: oklch(1.0 0 0);
-  --primary: oklch(0.6801 0.1583 276.9349);
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(0.7845 0.1325 181.912);
-  --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.3211 0 0);
-  --muted-foreground: oklch(0.8452 0 0);
-  --accent: oklch(0.879 0.1534 91.6054);
-  --accent-foreground: oklch(0 0 0);
-  --destructive: oklch(0.7106 0.1661 22.2162);
-  --destructive-foreground: oklch(0 0 0);
-  --border: oklch(0.4459 0 0);
-  --input: oklch(1.0 0 0);
-  --ring: oklch(0.6801 0.1583 276.9349);
-  --chart-1: oklch(0.6801 0.1583 276.9349);
-  --chart-2: oklch(0.7845 0.1325 181.912);
-  --chart-3: oklch(0.879 0.1534 91.6054);
-  --chart-4: oklch(0.7253 0.1752 349.7607);
-  --chart-5: oklch(0.8003 0.1821 151.711);
-  --sidebar: oklch(0 0 0);
-  --sidebar-foreground: oklch(1.0 0 0);
-  --sidebar-primary: oklch(0.6801 0.1583 276.9349);
-  --sidebar-primary-foreground: oklch(0 0 0);
-  --sidebar-accent: oklch(0.879 0.1534 91.6054);
-  --sidebar-accent-foreground: oklch(0 0 0);
-  --sidebar-border: oklch(1.0 0 0);
-  --sidebar-ring: oklch(0.6801 0.1583 276.9349);
+  /* Dark mode custom variables */
+  --gradient-primary: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  --gradient-secondary: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  --gradient-warm: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(8, 145, 178, 0.04) 100%);
+  --shadow-glow: 0 0 25px rgba(249, 115, 22, 0.2);
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {
@@ -156,11 +148,31 @@
   text-align: right;
 }
 
-/* Warm animations */
-@keyframes warm-fade-in {
+/* Enhanced Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
+  }
+}
+
+@keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -168,13 +180,89 @@
   }
 }
 
-.warm-fade-in {
-  animation: warm-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Custom Gradient Classes */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-warm {
+  background: var(--gradient-warm);
+}
+
+/* Custom Shadow Classes */
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-card-enhanced {
+  box-shadow: var(--shadow-card);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .warm-fade-in {
+  .animate-float,
+  .animate-glow,
+  .animate-slide-in-up,
+  .animate-scale-in,
+  .animate-shimmer,
+  .hover-lift {
     animation: none;
+    transition: none;
   }
 }
