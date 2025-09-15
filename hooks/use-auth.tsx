@@ -29,12 +29,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const supabase = createClient()
 
   useEffect(() => {
+    console.log("[v0] AuthProvider: Initializing auth state")
+
     const getSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-      setUser(session?.user ?? null)
-      setLoading(false)
+      try {
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession()
+
+        console.log("[v0] AuthProvider: Session data:", session)
+        console.log("[v0] AuthProvider: Session error:", error)
+
+        if (session?.user) {
+          console.log("[v0] AuthProvider: User found, setting user state")
+          setUser(session.user)
+        } else {
+          console.log("[v0] AuthProvider: No user found")
+          setUser(null)
+        }
+      } catch (error) {
+        console.error("[v0] AuthProvider: Error getting session:", error)
+        setUser(null)
+      } finally {
+        setLoading(false)
+      }
     }
 
     getSession()
@@ -42,7 +61,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      setUser(session?.user ?? null)
+      console.log("[v0] AuthProvider: Auth state changed:", event, session)
+
+      if (session?.user) {
+        console.log("[v0] AuthProvider: Setting user from auth state change")
+        setUser(session.user)
+      } else {
+        console.log("[v0] AuthProvider: Clearing user from auth state change")
+        setUser(null)
+      }
       setLoading(false)
     })
 
@@ -50,31 +77,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase.auth])
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
+    console.log("[v0] AuthProvider: Attempting sign in for:", email)
+
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
+    console.log("[v0] AuthProvider: Sign in result:", data, error)
+
     if (error) {
+      if (error.message.includes("Email not confirmed")) {
+        // Try to get the user anyway since we want to allow unconfirmed emails
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
+        if (session?.user) {
+          console.log("[v0] AuthProvider: Using unconfirmed user")
+          setUser(session.user)
+          return
+        }
+      }
       throw error
     }
   }
 
   const signUp = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({
+    console.log("[v0] AuthProvider: Attempting sign up for:", email)
+
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: {
-        emailRedirectTo: undefined, // Disable email confirmation
-      },
     })
+
+    console.log("[v0] AuthProvider: Sign up result:", data, error)
 
     if (error) {
       throw error
     }
+
+    if (data.user && !error) {
+      console.log("[v0] AuthProvider: Auto-signing in after signup")
+      await signIn(email, password)
+    }
   }
 
   const signOut = async () => {
+    console.log("[v0] AuthProvider: Signing out")
     await supabase.auth.signOut()
   }
 
@@ -85,6 +134,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signUp,
     signOut,
   }
+
+  console.log("[v0] AuthProvider: Current auth state - User:", user?.email, "Loading:", loading)
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
