@@ -1,5 +1,4 @@
 import { createBrowserClient, createServerClient } from "@supabase/ssr"
-import { cookies } from "next/headers"
 
 const supabaseUrl = "https://urzxbbqelpnzitqvffhs.supabase.co"
 const supabaseAnonKey =
@@ -10,6 +9,8 @@ export function createClient() {
 }
 
 export function createServerSupabaseClient() {
+  // Dynamic import to avoid build errors when used in client components
+  const { cookies } = require("next/headers")
   const cookieStore = cookies()
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
