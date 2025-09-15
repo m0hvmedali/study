@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Brain, Home, BookOpen, Gamepad2, HelpCircle, ImageIcon, Settings, Menu, X, Crown } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { AuthButton } from "@/components/auth/auth-button"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navigationItems = [
   { name: "الرئيسية", href: "/dashboard", icon: Home, roles: ["student", "teacher", "admin"] },
@@ -74,6 +75,7 @@ export function Navigation() {
                   المستوى {profile.level}
                 </Badge>
               </div>
+              <ThemeToggle />
               <AuthButton />
             </div>
           </div>
@@ -135,7 +137,10 @@ export function Navigation() {
                       المستوى {profile.level}
                     </Badge>
                   </div>
-                  <AuthButton />
+                  <div className="flex items-center gap-2">
+                    <ThemeToggle />
+                    <AuthButton />
+                  </div>
                 </div>
               </div>
             </div>
