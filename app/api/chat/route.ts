@@ -11,13 +11,13 @@ export async function POST(request: NextRequest) {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        Authorization: `Bearer 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`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+        "HTTP-Referer": "http://localhost:3000",
         "X-Title": "StudyForge Educational Platform",
       },
       body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",
+        model: "openai/gpt-oss-20b:free",
         messages: [
           {
             role: "system",

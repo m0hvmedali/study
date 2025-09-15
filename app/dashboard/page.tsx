@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Trophy, Target, Clock, Star, Award, PlayCircle, CheckCircle } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
-import { createBrowserClient } from "@supabase/ssr"
+import { createClient } from "@/lib/supabase"
 import { Chatbot } from "@/components/chatbot/chatbot"
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+const supabase = createClient()
 
 interface Subject {
   id: string
